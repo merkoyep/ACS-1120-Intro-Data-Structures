@@ -3,12 +3,14 @@ import random
 import histogram
 
 words = histogram.read_file("../Code/data/histogramtext.txt")
-
+word_histogram = histogram.generate_histogram(words)
 
 def uniform_rand_word(histogram):
     random_index = random.randint(0, len(histogram))
-    return histogram[random_index]
+    list_of_keys = []
+    for entry in histogram:
+        list_of_keys.append(entry)
+    return list_of_keys[random_index]
 
-word_histogram = histogram.generate_histogram(words)
-
-print(histogram.find_most_frequent_words(word_histogram))
+print(uniform_rand_word(word_histogram))
+    
