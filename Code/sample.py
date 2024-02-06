@@ -12,9 +12,6 @@ def uniform_rand_word(histogram):
         list_of_keys.append(entry)
     return list_of_keys[random_index]
 
-
-    
-
 # 100% = len(words)
 # word weight = word_histogram[word] / len(words)
 def weighted_sample(histogram):
@@ -36,3 +33,15 @@ def weighted_sample(histogram):
 #     return samples
 
 # print(test_weighted_sample())
+
+def stochastic_sentence(histogram):
+    sentence_length = random.randint(15, 20)
+    sentence = ""
+    for i in range(sentence_length):
+        if i == sentence_length - 1:
+            sentence += f'{weighted_sample(histogram)}.'
+        else:
+            sentence += f'{weighted_sample(histogram)} '
+    sentence = sentence[0].upper() + sentence[1:]
+    return sentence
+
