@@ -20,7 +20,7 @@ class Listogram(list):
 
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
-        # TODO: Increase word frequency by count
+        # Increase word frequency by count
         word_found = True
         for i, (tup_word, tup_count) in enumerate(self):
             if tup_word == word:
@@ -35,7 +35,7 @@ class Listogram(list):
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
-        # TODO: Retrieve word frequency count
+        # Retrieve word frequency count
         word_found = False
         for i, (tup_word, tup_count) in enumerate(self):
             if tup_word == word:
@@ -47,7 +47,7 @@ class Listogram(list):
 
     def __contains__(self, word):
         """Return boolean indicating if given word is in this histogram."""
-        # TODO: Check if word is in this histogram
+        # Check if word is in this histogram
         word_exists = False
         for i, (tup_word, tup_count) in enumerate(self):
             if tup_word == word:
@@ -58,7 +58,7 @@ class Listogram(list):
     def index_of(self, target):
         """Return the index of entry containing given target word if found in
         this histogram, or None if target word is not found."""
-        # TODO: Implement linear search to find index of entry with target word
+        # Implement linear search to find index of entry with target word
         for i, (tup_word, tup_count) in enumerate(self):
             if tup_word == target:
                 return i  
@@ -67,7 +67,7 @@ class Listogram(list):
     def sample(self):
         """Return a word from this histogram, randomly sampled by weighting
         each word's probability of being chosen by its observed frequency."""
-        # TODO: Randomly choose a word based on its frequency in this histogram
+        # Randomly choose a word based on its frequency in this histogram
         list_of_words = []
         list_of_occurences = []
         for i, (tup_word, tup_count) in enumerate(self):

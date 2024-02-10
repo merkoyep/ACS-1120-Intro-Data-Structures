@@ -63,7 +63,6 @@ def print_histogram(word_list):
     print()
     print_histogram_samples(histogram)
 
-
 def print_histogram_samples(histogram):
     print('Histogram samples:')
     # Sample the histogram 10,000 times and count frequency of results

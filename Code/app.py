@@ -2,7 +2,7 @@
 from flask import Flask
 import histogram
 import sample
-
+import markov
 app = Flask(__name__)
 
 # TODO: Initialize your histogram, hash table, or markov chain here.
@@ -13,7 +13,7 @@ word_histogram = histogram.generate_histogram(words)
 @app.route("/")
 def home():
     """Route that returns a web page containing the generated text."""
-    generated_text = sample.stochastic_sentence(word_histogram)
+    generated_text = markov.generate_sentence(words, word_histogram)
     return generated_text
 
 if __name__ == "__main__":

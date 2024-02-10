@@ -4,7 +4,7 @@ import re
 def read_file(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
         #For every line in the file, split each word in the line, and append to words
-        words = [re.sub(r'[^\w\d\s.,?!:;\'"-]', '', word).lower() for line in file for word in line.split()]
+        words = [re.sub(r'[^\w\d\s.,?!:;\'"-]', '', word) for line in file for word in line.split()]
     return words
 
 def generate_histogram(text):
