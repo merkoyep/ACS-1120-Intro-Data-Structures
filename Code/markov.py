@@ -19,10 +19,12 @@ def generate_types(word_list):
     return types
 
 def generate_transitions(types, word_list):
+    """Generates an object with words, and a histogram of next words and its occurences"""
     transitions = {}
     for type in types:
         type_transition_object = {type: {}}
         if type[-1] in ['.', '?', '!']:
+            "if the word ends in ending punctuation, object is empty."
             type_transition_object[type] = 'empty'
         else:
             for index, word in enumerate(word_list):
@@ -63,4 +65,3 @@ def generate_sentence(word_list, histogram):
             next_word = sample.weighted_sample(next_histogram[sentence[-1]])
             sentence.append(next_word)
     return ' '.join(sentence)
-

@@ -5,7 +5,7 @@ import sample
 import markov
 app = Flask(__name__)
 
-# TODO: Initialize your histogram, hash table, or markov chain here.
+# Initialize your histogram, hash table, or markov chain here.
 # Any code placed here will run only once, when the server starts.
 words = histogram.read_file("../Code/data/histogramtext.txt")
 word_histogram = histogram.generate_histogram(words)

@@ -53,34 +53,98 @@ class LinkedList:
     def length(self):
         """Return the length of this linked list by traversing its nodes.
         TODO: Running time: O(n) Why and under what conditions?"""
-        # TODO: Loop through all nodes and count one for each
+        # Loop through all nodes and count one for each
+        length = 0
+        for node in self:
+            length += 1
+        return length
+
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
         TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Create new node to hold given item
-        # TODO: If self.is_empty() == True set the head and the tail to the new node
-        # TODO: Else append node after tail
+        # Create new node to hold given item
+        new_node = Node(item)
+        # If self.is_empty() == True set the head and the tail to the new node
+        if self.is_empty():
+            self.head = new_node
+            self.tail = new_node
+        # Else append node after tail
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
         TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Create new node to hold given item
-        # TODO: Prepend node before head, if it exists
+        # Create new node to hold given item
+        new_node = Node(item)
+        # Prepend node before head, if it exists
+        if self.is_empty():
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
 
     def find(self, matcher):
         """Return an item from this linked list if it is present.
         TODO: Best case running time: O(???) Why and under what conditions?
         TODO: Worst case running time: O(???) Why and under what conditions?"""
-        # TODO: Loop through all nodes to find item, if present return True otherwise False
+        # Loop through all nodes to find item, if present return True otherwise False
+        current_node = self.head
+        while current_node is not None:
+            if matcher(current_node.data):
+                return current_node
+            current_node = current_node.next
+        return None
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
         TODO: Best case running time: O(???) Why and under what conditions?
         TODO: Worst case running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes to find one whose data matches given item
-        # TODO: Update previous node to skip around node with matching data
-        # TODO: Otherwise raise error to tell user that delete has failed
+        previous_node = None
+        current_node = self.head
+
+        while current_node is not None:
+            if current_node.data == item:
+                if previous_node is None:
+                    self.head = current_node.next
+                    if self.head is None:
+                        self.tail = None
+                else:
+                    previous_node.next = current_node.next
+                    if current_node.next is None:
+                        self.tail = previous_node
+                return
+            previous_node = current_node
+            current_node = current_node.next
+        raise ValueError('Item not found: {}'.format(item))
+    
+    def __iter__(self):
+        """Make the linked list iterable."""
+        current = self.head
+        while current:
+            yield current.data
+            current = current.next
+
+
+    def replace(self, old_item, new_item):
+        """Replace the first occurrence of old_item with new_item."""
+        current_node = self.head
+        while current_node is not None:
+            if current_node.data == old_item:
+                current_node.data = new_item
+                return True  # Return True if replacement was made
+            current_node = current_node.next
+        return False  # Return False if old_item was not found
+
+
+        # Update previous node to skip around node with matching data
+                
+            
+        # Otherwise raise error to tell user that delete has failed
         # Hint: raise ValueError('Item not found: {}'.format(item))
 
 
