@@ -129,7 +129,6 @@ class LinkedList:
             yield current.data
             current = current.next
 
-
     def replace(self, old_item, new_item):
         """Replace the first occurrence of old_item with new_item."""
         current_node = self.head
