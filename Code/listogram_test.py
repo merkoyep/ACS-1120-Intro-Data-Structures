@@ -12,6 +12,7 @@ class ListogramTest(unittest.TestCase):
     # Test fixtures: known inputs and their expected results
     fish_words = ['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish']
     fish_list = [('one', 1), ('fish', 4), ('two', 1), ('red', 1), ('blue', 1)]
+    fish_list_tuples = [['one', 1], ['fish', 4], ['two', 1], ['red', 1], ['blue', 1]]
     fish_dict = {'one': 1, 'fish': 4, 'two': 1, 'red': 1, 'blue': 1}
 
     def test_entries(self):
@@ -21,7 +22,7 @@ class ListogramTest(unittest.TestCase):
         listogram = Listogram(self.fish_words)
         # Verify histogram as list of entries like [(word, count)]
         assert len(listogram) == 5
-        self.assertCountEqual(listogram, self.fish_list)  # Ignore item order
+        self.assertCountEqual(listogram, self.fish_list_tuples)  # Ignore item order
         # Verify histogram as dictionary of entries like {word: count}
         dictogram = dict(listogram)
         assert len(dictogram) == 5

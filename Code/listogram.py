@@ -24,11 +24,11 @@ class Listogram(list):
         word_found = True
         for i, (tup_word, tup_count) in enumerate(self):
             if tup_word == word:
-                self[i] = (tup_word, tup_count + count)
+                self[i] = [tup_word, tup_count + count]
                 word_found = False
                 break
         if word_found:
-            self.append((word, count))
+            self.append([word, count])
             self.types += 1
         self.tokens += count
 
