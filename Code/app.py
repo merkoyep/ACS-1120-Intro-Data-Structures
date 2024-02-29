@@ -1,8 +1,8 @@
 """Main script, uses other modules to generate sentences."""
 from flask import Flask
 import histogram
-import sample
 import markov
+import random
 app = Flask(__name__)
 
 # Initialize your histogram, hash table, or markov chain here.
@@ -15,6 +15,15 @@ def home():
     """Route that returns a web page containing the generated text."""
     generated_text = markov.generate_sentence(words, word_histogram)
     return generated_text
+
+@app.route("/nth_order/<nth>")
+def higher_order(nth):
+    """Route that returns a web page containing the generated text using an nth order markov chain."""
+    order = int(nth)
+    n_grams = markov.generate_n_grams(words, order)
+    transitions = markov.generate_gram_transitions(n_grams)
+    sentence = markov.generate_gram_sentence(transitions)
+    return sentence
 
 if __name__ == "__main__":
     """To run the Flask server, execute `python app.py` in your terminal.

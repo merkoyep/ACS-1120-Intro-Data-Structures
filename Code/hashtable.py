@@ -52,7 +52,7 @@ class HashTable(object):
 
     def items(self):
         """Return a list of all items (key-value pairs) in this hash table.
-        TODO: Running time: O(n) Iterating through all buckets in self.buckets"""
+        Running time: O(n) Iterating through all buckets in self.buckets"""
         # Collect all pairs of key-value entries in each bucket
         all_items = []
         for bucket in self.buckets:

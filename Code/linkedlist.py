@@ -62,7 +62,7 @@ class LinkedList:
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
-        TODO: Running time: O(1) direct access of self.tail to append the node."""
+        Running time: O(1) direct access of self.tail to append the node."""
         # Create new node to hold given item
         new_node = Node(item)
         # If self.is_empty() == True set the head and the tail to the new node
@@ -101,8 +101,8 @@ class LinkedList:
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
-        TODO: Best case running time: O(1) When current_node is None, or first node matches
-        TODO: Worst case running time: O(n) if item is not in first node."""
+        Best case running time: O(1) When current_node is None, or first node matches
+        Worst case running time: O(n) if item is not in first node."""
         # TODO: Loop through all nodes to find one whose data matches given item
         previous_node = None
         current_node = self.head
